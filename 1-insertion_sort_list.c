@@ -1,11 +1,11 @@
 #include "sort.h"
 
 /**
-* swap - Swap two element of an array,
-* the one given by the index, and the one after
+* swap - Swap node of a double linked list
 *
-* @array: The array to do some operation
-* @idx: The idx to swap
+* @current: The current node
+* @prev: The previous node
+* @list: The pointer to the linked list
 *
 * Return: Anything, cause void function
 */
@@ -24,18 +24,17 @@ void swap(listint_t *current, listint_t *prev, listint_t **list)
     prev->prev = current;
     prev->next = current->next;
     current->next = prev;
-    if(prev->next != NULL)
+    if(prev->next)
         prev->next->prev = prev;
     else
         prev->next = NULL;
 }
 
 /**
-* bubble_sort - Sort a given array by using the bubble
-* sorting algo | Print each time the array, after sorting
+* insertion_sort_list - Sort a double linked list by comparing each
+* elem with the previous
 *
-* @array: The array to sort
-* @size: The size of the array
+* @list: The linked list to sort
 *
 * Return: Anything, cause void function
 */

@@ -1,8 +1,7 @@
 #include "sort.h"
 
 /**
- * selection_sort - Sort an array by comparing each
- * elem witch the row of the array
+ * shell_sort - Sort an array with the Knuth sequence
  *
  * @array: The array to sort
  * @size: lenght of the array

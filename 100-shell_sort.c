@@ -1,36 +1,46 @@
 #include "sort.h"
 
 /**
- * shell_sort - Sort an array with the Knuth sequence
- *
- * @array: The array to sort
- * @size: lenght of the array
- *
- * Return: Anything, cause void function
- */
+* swap - Swap two element of an array,
+* the one given by the index, and the one after
+*
+* @array: The array to do some operation
+* @idx1: The idx to swap
+* @idx2: The idx to swap
+*
+* Return: Anything, cause void function
+*/
+void swap(int *array, int idx1, int idx2)
+{
+    int tmp;
+
+    tmp = array[idx1];
+    array[idx1] = array[idx2];
+    array[idx2] = tmp;
+}
 
 void shell_sort(int *array, size_t size)
 {
-	int j, k;
-	size_t i;
-	size_t incr = 1;
+    size_t gap = 1, i;
+    int j, k;
 
-	if (!array || size <= 1)
-		return;
+    while (gap <= size / 3)
+        gap = gap * 3 + 1;
 
-	while (incr <= (size - 1) / 9)
-		incr = 3 * incr + 1;
-
-	while (incr >= 1)
-	{
-		for (i = incr; i < size; i++)
+    while (gap > 0)
+    {
+		for (i = gap; i < size; i++)
 		{
 			k = array[i];
-			for (j = i - incr; j >= 0 && k < array[j]; j = j - incr)
-				array[j + incr] = array[j];
-			array[j + incr] = k;
+            j = i - gap;
+			while (j >= 0 && k < array[j])
+            {
+				array[j + gap] = array[j];
+                j -= gap;
+            }
+			array[j + gap] = k;
 		}
 		print_array(array, size);
-		incr = incr / 3;
-	}
+		gap = gap / 3;
+    }
 }

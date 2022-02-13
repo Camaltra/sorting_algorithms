@@ -11,11 +11,11 @@
 */
 void swap(int *array, int idx)
 {
-    int tmp;
+	int tmp;
 
-    tmp = array[idx];
-    array[idx] = array[idx + 1];
-    array[idx + 1] = tmp;
+	tmp = array[idx];
+	array[idx] = array[idx + 1];
+	array[idx + 1] = tmp;
 }
 
 /**
@@ -29,22 +29,25 @@ void swap(int *array, int idx)
 */
 void bubble_sort(int *array, size_t size)
 {
-    int i, j, sorted;
+	int i, j, sorted;
 
-    for (i = size - 1; i > 0; i--)
-    {
-        sorted = 1;
-        for (j = 0; j < i; j++)
-        {
-            if (array[j] > array[j + 1])
-            {
-                swap(array, j);
-                sorted = 0;
-                print_array(array, size);
-            }
-        }
-        if (sorted)
-            break;
-    }
+	if (!array || size <= 1)
+		return;
+
+	for (i = size - 1; i > 0; i--)
+	{
+		sorted = 1;
+		for (j = 0; j < i; j++)
+		{
+			if (array[j] > array[j + 1])
+			{
+				swap(array, j);
+				sorted = 0;
+				print_array(array, size);
+			}
+		}
+		if (sorted)
+			break;
+	}
 }
 

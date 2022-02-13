@@ -15,6 +15,9 @@ void shell_sort(int *array, size_t size)
 	size_t i;
 	size_t incr = 1;
 
+	if (!array || size <= 1)
+		return;
+
 	while (incr <= (size - 1) / 9)
 		incr = 3 * incr + 1;
 

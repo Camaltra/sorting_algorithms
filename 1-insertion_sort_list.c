@@ -11,23 +11,23 @@
 */
 void swap(listint_t *current, listint_t *prev, listint_t **list)
 {
-    listint_t *tmp;
+	listint_t *tmp;
 
-    tmp = prev->prev;
-    if (tmp)
-        tmp->next = current;
-    else
-        *list = current;
+	tmp = prev->prev;
+	if (tmp)
+		tmp->next = current;
+	else
+		*list = current;
 
-    current->prev = tmp;
+	current->prev = tmp;
 
-    prev->prev = current;
-    prev->next = current->next;
-    current->next = prev;
-    if(prev->next)
-        prev->next->prev = prev;
-    else
-        prev->next = NULL;
+	prev->prev = current;
+	prev->next = current->next;
+	current->next = prev;
+	if (prev->next)
+		prev->next->prev = prev;
+	else
+		prev->next = NULL;
 }
 
 /**
@@ -40,20 +40,20 @@ void swap(listint_t *current, listint_t *prev, listint_t **list)
 */
 void insertion_sort_list(listint_t **list)
 {
-    listint_t *browse = NULL;
+	listint_t *browse = NULL;
 
-    if (!list || !*list)
-        return;
+	if (!list || !*list)
+		return;
 
-    browse = (*list)->next;
-    while (browse)
-    {
-        while (browse->prev && browse->prev->n > browse->n)
-        {
-            swap(browse, browse->prev, list);
-            print_list(*list);
-        }
-        browse = browse->next;
-    }
+	browse = (*list)->next;
+	while (browse)
+	{
+		while (browse->prev && browse->prev->n > browse->n)
+		{
+			swap(browse, browse->prev, list);
+			print_list(*list);
+		}
+		browse = browse->next;
+	}
 }
 

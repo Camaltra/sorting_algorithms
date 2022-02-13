@@ -12,11 +12,11 @@
 */
 void swap(int *array, int idx1, int idx2)
 {
-    int tmp;
+	int tmp;
 
-    tmp = array[idx1];
-    array[idx1] = array[idx2];
-    array[idx2] = tmp;
+	tmp = array[idx1];
+	array[idx1] = array[idx2];
+	array[idx2] = tmp;
 }
 
 /**
@@ -31,30 +31,30 @@ void swap(int *array, int idx1, int idx2)
 */
 int partition(int *arr, int low, int high, size_t size)
 {
-    int pivot = arr[high];
-    int i = low;
-    int j;
+	int pivot = arr[high];
+	int i = low;
+	int j;
 
-    for (j = low; j < high; j++)
-    {
-        if (arr[j] < pivot)
-        {
-            if (i != j)
-            {
-                swap(arr, i, j);
-                print_array(arr, size);
-            }
-            i++;
-        }
-    }
-    if (arr[high] < arr[i])
-    {   
-        swap(arr, i, high);
-        print_array(arr, size);
-    }
-    return (i);
+	for (j = low; j < high; j++)
+	{
+		if (arr[j] < pivot)
+		{
+			if (i != j)
+			{
+				swap(arr, i, j);
+				print_array(arr, size);
+			}
+			i++;
+		}
+	}
+	if (arr[high] < arr[i])
+	{
+		swap(arr, i, high);
+		print_array(arr, size);
+	}
+	return (i);
 }
- 
+
 /**
 * quickSort - Sort an array using Quick sort algo
 *
@@ -67,14 +67,15 @@ int partition(int *arr, int low, int high, size_t size)
 */
 void quickSort(int *arr, int low, int high, int size)
 {
-    int pi;
-    if (low < high)
-    {
-        pi = partition(arr, low, high, size);
- 
-        quickSort(arr, low, pi - 1, size);
-        quickSort(arr, pi + 1, high, size);
-    }
+	int pi;
+
+	if (low < high)
+	{
+		pi = partition(arr, low, high, size);
+
+		quickSort(arr, low, pi - 1, size);
+		quickSort(arr, pi + 1, high, size);
+	}
 }
 
 /**
@@ -87,5 +88,8 @@ void quickSort(int *arr, int low, int high, int size)
 */
 void quick_sort(int *array, size_t size)
 {
-    quickSort(array, 0, size - 1, size);
+	if (!array || size <= 1)
+		return;
+
+	quickSort(array, 0, size - 1, size);
 }

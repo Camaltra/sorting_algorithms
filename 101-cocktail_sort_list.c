@@ -51,7 +51,7 @@ void cocktail_sort_list(listint_t **list)
 		swaped = 0;
 		while (browse->next && browse != end)
 		{
-			if (browse->n > browse->next->n)
+			if (browse->n >= browse->next->n)
 			{
 				swap(browse->next, browse, list);
 				print_list(*list);
@@ -63,7 +63,7 @@ void cocktail_sort_list(listint_t **list)
 		end = browse->prev;
 		while (browse->prev && browse != start)
 		{
-			if (browse->n < browse->prev->n)
+			if (browse->n <= browse->prev->n)
 			{
 				swap(browse, browse->prev, list);
 				print_list(*list);

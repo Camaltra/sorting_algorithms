@@ -45,16 +45,13 @@ int cardValue(deck_node_t *node)
 	int i;
 
 	for (i = 0; deck[i]; i++)
-	{
 		if (strcmp(node->card->value, deck[i]) == 0)
 		{
 			valueCard += i;
+			if (strcmp(deck[i], "Ace") == 0)
+				valueCard += 1;
 			break;
 		}
-	}
-	if (strcmp(deck[i], "King") == 0 &&
-		(node->card->kind == 1 || node->card->kind == 2))
-		valueCard -= 1;
 	return (valueCard + ((node->card->kind) * 13));
 }
 

@@ -46,11 +46,8 @@ void radixSort(int *array, int *buf, size_t size, size_t digit)
 	for (i = 1; i < 10; i++)
 		arrayCount[i] += arrayCount[i - 1];
 
-	print_array(arrayCount, 10);
-
 	for (i = size - 1; (int)i >= 0; i--)
 	{
-		printf("%d\n", arrayCount[(array[i] / digit) % 10] - 1);
 		buf[arrayCount[(array[i] / digit) % 10] - 1] = array[i];
 		arrayCount[(array[i] / digit) % 10] -= 1;
 	}

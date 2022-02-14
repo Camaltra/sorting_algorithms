@@ -86,13 +86,13 @@ void bitonicSortRec(int *array, size_t way, size_t size, size_t sizeArray)
 	middle = size / 2;
 
 	printf("Merging [%ld/%ld]", size, sizeArray);
-	way == 1 ? printf(" (UP)\n") : printf(" (DOWN)\n");
+	way == 1 ? printf(" (UP):\n") : printf(" (DOWN):\n");
 	print_array(array, size);
 	bitonicSortRec(array, 1, middle, sizeArray);
 	bitonicSortRec((array + middle), 0, middle, sizeArray);
 	mergeBitonicSorted(array, way, size);
 	printf("Result [%ld/%ld]", size, sizeArray);
-	way == 1 ? printf(" (UP)\n") : printf(" (DOWN)\n");
+	way == 1 ? printf(" (UP):\n") : printf(" (DOWN):\n");
 	print_array(array, size);
 }
 
@@ -107,7 +107,7 @@ void bitonicSortRec(int *array, size_t way, size_t size, size_t sizeArray)
 */
 void bitonic_sort(int *array, size_t size)
 {
-	if (!array || size < 2)
+	if (!array || size <= 1)
 		return;
 
 	bitonicSortRec(array, 1, size, size);

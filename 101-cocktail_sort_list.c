@@ -60,7 +60,6 @@ void cocktail_sort_list(listint_t **list)
 			}
 			browse = browse->next;
 		}
-		swaped = 0;
 		end = browse->prev;
 		while (browse->prev && browse != start)
 		{

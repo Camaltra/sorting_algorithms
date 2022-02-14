@@ -10,13 +10,13 @@
  *
  * Return: Anything, cause void function
  */
-void _swap(int *a, int *b)
+void swap(int *array, int idx1, int idx2)
 {
 	int tmp;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	tmp = array[idx1];
+	array[idx1] = array[idx2];
+	array[idx2] = tmp;
 }
 
 /**
@@ -32,7 +32,7 @@ void _swap(int *a, int *b)
 int partition(int *arr, int low, int high, size_t size)
 {
 	int pivot = arr[high];
-	int i = low, j = high;
+	int i = low, j = high - 1;
 
 	while (1)
 	{
@@ -40,20 +40,22 @@ int partition(int *arr, int low, int high, size_t size)
 			i++;
 		while (arr[j] > pivot)
 			j--;
-		if (i < j)
+		if (i >= j)
 		{
-			_swap(&arr[i], &arr[j]);
-			print_array(arr, size);
-			i++;
-			j--;
+			if (i != high)
+			{
+				swap(arr, high, i);
+				print_array(arr, size);
+			}
+			break;
 		}
-		else
+		else if (i < j)
 		{
-			if (i != j)
-				return (j);
-			return (j - 1);
+			swap(arr, i, j);
+			print_array(arr, size);
 		}
 	}
+	return (j);
 }
 
 /**
@@ -73,8 +75,8 @@ void quickSort(int *arr, int low, int high, int size)
 	if (high > low)
 	{
 		pi = partition(arr, low, high, size);
-		if (pi > low)
-			quickSort(arr, low, pi, size);
+
+		quickSort(arr, low, pi, size);
 		quickSort(arr, pi + 1, high, size);
 	}
 }

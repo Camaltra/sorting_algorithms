@@ -1,12 +1,11 @@
 #include "sort.h"
 
 /**
- * swap - Swap two element of an array,
+ * _swap - Swap two element of an array,
  * the one given by the index, and the one after
  *
- * @array: The array to do some operation
- * @idx1: The idx to swap
- * @idx2: The idx to swap
+ * @a: The idx to swap
+ * @b: The idx to swap
  *
  * Return: Anything, cause void function
  */

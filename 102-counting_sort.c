@@ -49,8 +49,8 @@ void memInit(int *array, size_t size)
 */
 void counting_sort(int *array, size_t size)
 {
-	size_t max = array[0], i;
-	int *arrayCounter = NULL, *output;
+	size_t max, i;
+	int *arrayCounter = NULL, *output = NULL;
 
 	if (!array || size <= 1)
 		return;

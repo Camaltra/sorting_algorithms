@@ -43,7 +43,7 @@ void cocktail_sort_list(listint_t **list)
 	listint_t *browse = *list, *start = NULL, *end = NULL;
 	int swaped = 1;
 
-	if (!array || size <= 1)
+	if (!list || !*list)
 		return;
 	while (swaped)
 	{

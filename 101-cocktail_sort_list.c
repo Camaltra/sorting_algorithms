@@ -61,6 +61,7 @@ void cocktail_sort_list(listint_t **list)
 			browse = browse->next;
 		}
 		end = browse->prev;
+		browse = end;
 		while (browse->prev && browse != start)
 		{
 			if (browse->n < browse->prev->n)

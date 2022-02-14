@@ -34,7 +34,7 @@ void memInit(int *array, size_t size)
 {
 	size_t i;
 
-	for (i = 0; i <= size; i++)
+	for (i = 0; i < size; i++)
 		array[i] = 0;
 }
 
@@ -52,9 +52,12 @@ void counting_sort(int *array, size_t size)
 	size_t max = array[0], i;
 	int *arrayCounter = NULL, *output;
 
+	if (!array || size <= 1)
+		return;
+
 	max = searchMax(array, size);
 	output = malloc(sizeof(int) * size);
-	arrayCounter = malloc(sizeof(int) * max + 1);
+	arrayCounter = malloc(sizeof(int) * max + 2);
 	if (!arrayCounter || !output)
 		return;
 	memInit(arrayCounter, max);
